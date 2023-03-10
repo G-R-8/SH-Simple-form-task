@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Form</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <form onsubmit="return validateForm()" class="wrapper">
+      <div class="title">Registration Form</div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      <br />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <br />
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" required />
+      <br />
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      function validateForm() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let gender = document.getElementById("gender").value;
+        let password = document.getElementById("password").value;
+
+        if (!name) {
+          alert("Please enter your name");
+          return false;
+        }
+        if (!email) {
+          alert("Please enter your email");
+          return false;
+        }
+        if (!phone) {
+          alert("Please enter your phone number");
+          return false;
+        }
+        if (gender === "") {
+          alert("Please select your gender");
+          return false;
+        }
+        if (!password) {
+          alert("Please enter a password");
+          return false;
+        }
+
+        // Validate email format
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address");
+          return false;
+        }
+
+        // If everything is valid, show success message
+        alert("Form submitted successfully!");
+        return true;
+      }
+    </script>
+
+    <!--Here's a breakdown of the form's features:
+
+The form has fields for name, email, phone, gender, and password, with the required attribute to ensure that these fields are filled out before submitting.
+The form has a submit button, which triggers the validateForm() function when clicked.
+The validateForm() function checks that all required fields have been filled out, and if any are missing, alerts the user to fill them in. The missing field is also highlighted in red.
+The validateForm() function uses a regular expression to validate the format of the email address entered. If the email is not valid, an error message is displayed, and the field is highlighted in red.
+If all fields are valid, a success message is displayed.
+
+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-->
+  </body>
+</html>
